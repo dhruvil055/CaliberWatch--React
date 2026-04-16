@@ -6,6 +6,9 @@ on:
 
 jobs:
   build-and-deploy:
+    permissions:
+      contents: read
+      pages: write
     runs-on: ubuntu-latest
 
     steps:
@@ -30,3 +33,12 @@ jobs:
           folder: frontend/build
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure GitHub Pages source
+        run: |
+          curl -X PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            https://api.github.com/repos/${{ github.repository }}/pages \
+            -d '{"source":{"branch":"gh-pages","path":"/"}}'
