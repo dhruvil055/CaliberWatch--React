@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Alert, Button, Card, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import OtpInput from '../components/OtpInput';
 import GoogleAuthButton from '../components/GoogleAuthButton';
 import { AuthContext } from '../context/AuthContext';

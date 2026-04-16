@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 import { adminAPI } from '../services/api';
 import { AuthContext } from '../context/AuthContext';
-import { ALLOWED_ADMIN_EMAILS, DEFAULT_ADMIN_EMAIL } from '../access';
+import { DEFAULT_ADMIN_EMAIL } from '../access';
 
 import './Auth.css';
 
@@ -16,27 +16,6 @@ function AdminLogin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const adminHighlights = [
-    {
-      value: 'Inventory',
-      label: 'Manage watch catalog, pricing, and availability from one panel.',
-    },
-    {
-      value: 'Orders',
-      label: 'Track payment state, fulfillment flow, and customer delivery status.',
-    },
-    {
-      value: 'Insights',
-      label: 'Review customer, product, and revenue signals before you change stock.',
-    },
-  ];
-
-  const securityPoints = [
-    'Direct admin login is enabled for approved admin accounts.',
-    `Allowed emails: ${ALLOWED_ADMIN_EMAILS.join(' and ')}.`,
-    'Admin token is stored in the current browser session only.',
-  ];
 
   useEffect(() => {
     if (!authLoading && admin) navigate('/admin/dashboard');
